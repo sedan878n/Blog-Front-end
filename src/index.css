@@ -5,3 +5,11 @@
 html {
   scroll-behavior: smooth;
 }
+
+#posts-new img {
+  width: 300px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
