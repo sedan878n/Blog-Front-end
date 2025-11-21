@@ -28,12 +28,12 @@ consistently practice by building projects and solving problems, and focus on ma
 function PostsIndex(props) {
   return(
       <div id="posts-index">
-        <h1>All {props.blogProps.length} Blog Postings</h1>
+        <h1>All {props.blogProps.length} Old Blog Posts</h1>
 
         {props.blogProps.map((blog) =>(
           <div key={blog.id} className="blogs>">
-            <h2>{<blog.tile}</h2>
-            <img src={blog.image_url}/>
+            <h2>{blog.title}</h2>
+            <img src={blog.image}/>
             <p>Post: {blog.text}</p>
             <button> Read More </button>
           </div>
@@ -72,9 +72,9 @@ function PostsPage() {
 
     {
       id: 3,
-      title: "",
-      text: "",
-      image: ""
+      title: "Practice to be a Better Programmer",
+      text: "To become a better programmer, practice consistently by coding daily and building projects, while also focusing on understanding core concepts like data structures and algorithms. Improving your skills also involves learning from others by reading code from experienced developers, contributing to open-source projects, and seeking feedback on your own code",
+      image: "https://i0.wp.com/thelearningprogrammer.com/wp-content/uploads/2020/02/hard-working-programmer.jpg?resize=640%2C427&ssl=1"
     }
   ]
   return(
