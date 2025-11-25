@@ -13,3 +13,11 @@ html {
 html {
   scroll-behavior: smooth;
 }
+
+#posts-sho img {
+  width: 300px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
