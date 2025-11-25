@@ -6,6 +6,7 @@ export function PostsNew(props) {
     const params = new FormData(form);
     props.onCreate(params)
     form.reset();
+    
   }
 
   return (
