@@ -12,7 +12,7 @@ export function PostsPage() {
   const [currentPost, setCurrentPost] = useState({});
 
   const handleIndex = () => {
-    axios.get("http://localhost:3000/posts.json").then((response) => {
+    axios.get("/posts.json").then((response) => {
       setPosts(response.data);
     });
   };
@@ -25,20 +25,27 @@ export function PostsPage() {
 
   const handleCreate = (params) => {
     console.log("handleCreate");
-    axios.post("http://localhost:3000/posts.json", params).then((response) => {
+    axios.post("/posts.json", params).then((response) => {
       console.log(response.data);
-      let copiedPosts = Array.from(blog);
-      copiedPosts.push(response.data);
       setPosts([...blog, response.data]);
     });
   };
 
   const handleUpdate = (post, params) => {
     console.log("handleUpdate");
-    axios.patch(`http://localhost:3000/posts/${post.id}.json`, params).then((response) => {
+    axios.patch(`/posts/${post.id}.json`, params).then((response) => {
       console.log(response.data);
 
       setPosts(blog.map((p) => (p.id === response.data.id ? response.data : p)));
+      setIsPostsShowVisible(false);
+    });
+  };
+
+  const handleDestroy = (post) => {
+    console.log("handleDestroy", post);
+    axios.delete(`/posts/${post.id}.json`).then((response) => {
+      console.log(response.data);
+      setPosts(blog.filter((p) => p.id !== post.id));
       setIsPostsShowVisible(false);
     });
   };
@@ -50,7 +57,7 @@ export function PostsPage() {
       <PostsNew onCreate={handleCreate} />
       <PostsIndex blogProps={blog} onShow={handleShow} />
       <Modal show={isPostsShowVisible} onClose={() => setIsPostsShowVisible(false)}>
-        <PostsShow blog={currentPost} onUpdate={handleUpdate} />
+        <PostsShow blog={currentPost} onUpdate={handleUpdate} onDestroy={handleDestroy} />
       </Modal>
     </div>
   );

@@ -25,6 +25,7 @@ export function PostsShow(props) {
         </div>
         <button type="submit"> Update Blog </button>
       </form>
+      <button onClick={() => props.onDestroy(props.blog)}> Delete Blog Post </button>
     </div>
   );
 }

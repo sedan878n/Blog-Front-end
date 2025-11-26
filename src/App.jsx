@@ -5,15 +5,18 @@ import "./App.css";
 import { Header } from "./Components/Header";
 import { PostsPage } from "./Components/PostsPage";
 import { Footer } from "./Components/Footer";
+import axios from "axios";
 
+axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.withCredentials = true;
 function App() {
-  return(
+  return (
     <div>
-      <Header/>
-      <PostsPage/>
-      <Footer/>
+      <Header />
+      <PostsPage />
+      <Footer />
     </div>
-  )
+  );
 }
 
 export default App;
